@@ -1,0 +1,2 @@
+# Gemini-Chatbot
+An AI project utilizing Google's Gemini model to build an interactive chatbot. This repository explores basic AI concepts, including large language models (LLMs) and API integration, allowing users to create AI-powered applications.
