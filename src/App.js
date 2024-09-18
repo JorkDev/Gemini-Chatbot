@@ -2,17 +2,30 @@ import { useState } from "react"
 
 
 const App = () => {
-  const [error, setError] = useState("there was an error")
+  const [value, setValue] = useState("")
+  const [error, setError] = useState("")
+  const [chatHisotry, setChatHistory] = useState([])
+
+  const surpriseOptions = [
+    'Who won the latest Novel Peace Prize?',
+    'Where does pizza come from?',
+    'Who do you make a BLT sandwich'
+  ]
+
+  const surprise = () => {
+    const randomValue = surpriseOptions[Math.floor(Math.random() * surpriseOptions.length)]
+    setValue(randomValue)
+  }
 
   return (
     <div className="app">
       <p>What do you want to know?
-        <button className="surprise">Surprise me</button>
+        <button className="surprise" onClick={surprise} disabled={!chatHisotry}>Surprise me</button>
       </p>
       <div className="input-container">
-        <input value={""}
+        <input value={value}
           placeholder="When is Christmas...?"
-          onChange={""}
+          onChange={(e) => setValue(e.target.value)}
         />
         {!error && <button>Ask Me</button>}
         {error && <button>Clear</button>}
