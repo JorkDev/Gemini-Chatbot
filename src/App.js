@@ -1,5 +1,4 @@
-import { useState } from "react"
-
+const { useState } = require('react');
 
 const App = () => {
   const [value, setValue] = useState("")
@@ -38,7 +37,6 @@ const App = () => {
       const response = await fetch('http://localhost:3000/gemini', options)
       const data = await response.text()
       console.log(data)
-      
     } catch (error) {
       console.error(error)
       setError("Something went wrong! Please try again later.")
