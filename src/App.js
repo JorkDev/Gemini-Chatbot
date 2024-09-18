@@ -17,6 +17,34 @@ const App = () => {
     setValue(randomValue)
   }
 
+  const getResponse = async () => {
+    if (!value) {
+      setError("Error! Please ask a question!")
+      return
+    }
+
+    try {
+      const options = {
+        method: 'POST',
+        body: JSON.stringify({
+          history: chatHisotry,
+          message: value
+        }),
+        headers: {
+          'Conten-Type': 'application/json'
+        }
+      }
+
+      const response = await fetch('http://localhost:3000/gemini', options)
+      const data = await response.text()
+      console.log(data)
+      
+    } catch (error) {
+      console.error(error)
+      setError("Something went wrong! Please try again later.")
+    }
+  }
+
   return (
     <div className="app">
       <p>What do you want to know?
